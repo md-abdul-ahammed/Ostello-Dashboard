@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BsFillCircleFill } from "react-icons/bs";
-import InstituteDetailsModal from "../Modal/InstituteDetailsModal";
+import InstituteDetailsModal from "../Modal/InstituteDetailsModal/InstituteDetailsModal";
 
 const allData = [
   {

@@ -12,6 +12,11 @@ import Careers from "./Pages/Dashboard/Careers/Careers";
 import InstituteRequests from "./components/InstituteRequests/InstituteRequests";
 import WaitingList from "./components/WaitingList/WaitingList";
 import CourseRequests from "./components/CourseRequests/CourseRequests";
+import ActiveBlogs from "./components/ActiveBlogs/ActiveBlogs";
+import AddBlog from "./components/AddBlog/AddBlog";
+import ActiveEvents from "./components/ActiveEvents/ActiveEvents";
+import AddEvent from "./components/AddEvent/AddEvent";
+import EditEvent from "./components/EditEvent/EditEvent";
 
 function App() {
   return (
@@ -21,6 +26,14 @@ function App() {
         <Route
           path="/dashboard/requests"
           element={<Navigate to="/dashboard/requests/instituteRequests" />}
+        />
+        <Route
+          path="/dashboard/blogs"
+          element={<Navigate to="/dashboard/blogs/activeBlogs" />}
+        />
+        <Route
+          path="/dashboard/events"
+          element={<Navigate to="/dashboard/events/activeEvents" />}
         />
         <Route path="/dashboard/*" element={<Dashboard />}>
           <Route path="overview" element={<Overview />} />
@@ -32,8 +45,15 @@ function App() {
           <Route path="institutes" element={<Institutes />} />
           <Route path="students" element={<Students />} />
           <Route path="coupons" element={<Coupons />} />
-          <Route path="blogs" element={<Blogs />} />
-          <Route path="events" element={<Events />} />
+          <Route path="blogs/*" element={<Blogs />}>
+            <Route path="activeBlogs" element={<ActiveBlogs />} />
+            <Route path="addBlog" element={<AddBlog />} />
+          </Route>
+          <Route path="events/*" element={<Events />}>
+            <Route path="activeEvents" element={<ActiveEvents />} />
+            <Route path="addEvent" element={<AddEvent />} />
+            <Route path="editEvent" element={<EditEvent />} />
+          </Route>
           <Route path="careers" element={<Careers />} />
         </Route>
       </Routes>

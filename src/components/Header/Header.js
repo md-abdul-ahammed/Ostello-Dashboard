@@ -3,8 +3,6 @@ import React from "react";
 import logo from "../../util/assets/images/logo.png";
 
 const Header = ({ pageTitle }) => {
-  console.log(pageTitle);
-
   return (
     <>
       <div className="md:block hidden">
