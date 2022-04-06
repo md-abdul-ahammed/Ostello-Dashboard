@@ -1,14 +1,12 @@
 import React from "react";
-import blogImage from "../../util/assets/images/blog.png";
-import DeleteIcon from "../DeleteIcon/DeleteIcon";
 
 const Card = ({ data }) => {
-  const { title, desc, date, reading_time } = data;
+  const { title, desc, date, reading_time, img } = data;
 
   return (
-    <div className="p-4 bg-white rounded-[2.5rem] relative shadow-md">
+    <div className="p-4 bg-white rounded-[2.5rem] shadow-md">
       <div className="flex flex-col">
-        <img src={blogImage} alt="" />
+        <img src={img} alt="" />
         <p className="text-[14px] pt-3 text-[#A0A0A0]">
           {date} l {reading_time} min read
         </p>
@@ -23,9 +21,6 @@ const Card = ({ data }) => {
             </span>{" "}
           </p>
         )}
-      </div>
-      <div className="absolute top-8 right-8 bg-white p-2.5 shadow-lg cursor-pointer rounded-full">
-        <DeleteIcon />
       </div>
     </div>
   );

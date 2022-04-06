@@ -1,15 +1,15 @@
 import React from "react";
-import ActiveInstitutions from "../ActiveInstitutions/ActiveInstitutions";
+import TopInstitutes from "../TopInstitutes/TopInstitutes";
 import StudentRegistering from "../StudentRegistering/StudentRegistering";
 
 const Chart = () => {
   return (
-    <div className="flex lg:flex-row flex-col my-12 gap-x-6">
+    <div className="flex lg:flex-row flex-col items-center my-12 gap-y-6 md:gap-x-6">
       <div className=" lg:w-8/12 w-full">
         <StudentRegistering />
       </div>
       <div className="lg:w-4/12 w-full">
-        <ActiveInstitutions />
+        <TopInstitutes />
       </div>
     </div>
   );
