@@ -155,7 +155,7 @@ const MobileMenu = () => {
         </div>
       </div>
       {open && (
-        <div className="h-screen md:hidden block w-[70%] z-50 rounded-r-3xl shadow-[0_35px_800px_-10px_rgba(0,0,0,0.9)] fixed top-0 left-0 bg-white">
+        <div className="h-screen md:hidden block w-[70%] z-50 rounded-r-3xl scrollbar-thin scrollbar-thumb-blue-900 scrollbar-track-gray-100 overflow-y-scroll shadow-[0_35px_800px_-10px_rgba(0,0,0,0.9)] fixed top-0 left-0 bg-white">
           <div className="flex justify-between items-center pt-12 px-4">
             <div className=" flex w-[80%] items-center">
               <img src={logo} className="w-[30px] mr-4" alt="" />
