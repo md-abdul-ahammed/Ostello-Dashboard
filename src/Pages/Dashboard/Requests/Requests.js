@@ -14,8 +14,12 @@ const menuItems = [
     route: "courseRequests",
   },
   {
-    name: "Waiting List",
-    route: "waitingList",
+    name: "Changes Request",
+    route: "changesRequest",
+  },
+  {
+    name: "Rejected List",
+    route: "rejectedList",
   },
 ];
 
@@ -50,14 +54,24 @@ const Requests = () => {
               Course Requests
             </NavLink>
             <NavLink
-              to="waitingList"
+              to="changesRequest"
               className={(navInfo) =>
                 navInfo.isActive
                   ? "font-medium text-[#ffffff] px-4 rounded-md py-1 bg-[#7D23E0]"
                   : "font-medium text-[#868686] px-4 rounded-md py-1 bg-[#F0F0F0]"
               }
             >
-              Waiting List
+              Changes Request
+            </NavLink>
+            <NavLink
+              to="rejectedList"
+              className={(navInfo) =>
+                navInfo.isActive
+                  ? "font-medium text-[#ffffff] px-4 ml-4 rounded-md py-1 bg-[#7D23E0]"
+                  : "font-medium text-[#868686] px-4 ml-4 rounded-md py-1 bg-[#F0F0F0]"
+              }
+            >
+              Rejected List
             </NavLink>
           </div>
         </div>

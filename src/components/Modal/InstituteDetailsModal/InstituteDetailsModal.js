@@ -1,6 +1,36 @@
 import React from "react";
+import axios from "axios";
 
-const InstituteDetailsModal = ({ setShowModal }) => {
+const InstituteDetailsModal = ({ institute, from, setShowModal }) => {
+  const {
+    name,
+    description,
+    address,
+    phonenumber,
+    approval,
+    owner,
+    id,
+    services,
+  } = institute;
+  const { city, line1, line2, area, country, pincode, state } =
+    JSON.parse(address);
+  const { skills } = JSON.parse(services);
+
+  const handleAccept = (value) => {
+    const patchData = {
+      id,
+      approve: approval - Number(value),
+    };
+    const config = {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        Authorization: `Bearer ${window.localStorage.getItem("access_token")}`,
+      },
+    };
+    const url = "https://api.ostello.co.in/institute/approve";
+    axios.patch(url, patchData, config);
+  };
+
   return (
     <>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -22,13 +52,13 @@ const InstituteDetailsModal = ({ setShowModal }) => {
               </button>
             </div>
             {/*body*/}
-            <div className="relative px-6 h-[400px] overflow-y-auto scrollbar-hide flex-auto">
+            <div className="relative px-6 h-[60vh] overflow-y-auto scrollbar-hide flex-auto">
               <div className="mb-4">
                 <p className="text-[#767676] text-[14px] font-medium uppercase">
                   Institute name
                 </p>
-                <p className="text-[#414141] text-[18px] font-medium">
-                  XYZ Design Academy
+                <p className="text-[#414141] capitalize text-[18px] font-medium">
+                  {name}
                 </p>
               </div>
               <div className="mb-4">
@@ -36,9 +66,7 @@ const InstituteDetailsModal = ({ setShowModal }) => {
                   Description
                 </p>
                 <p className="text-[#414141] text-[18px] font-medium">
-                  The Institute is in parallel with Indian values, spiritualism
-                  & hard work under the efficient directions of Shri Govind
-                  Maheshwari, Shri Naveen Maheshwari
+                  {description}
                 </p>
               </div>
               <div className="mb-4">
@@ -60,10 +88,10 @@ const InstituteDetailsModal = ({ setShowModal }) => {
                   Address
                 </p>
                 <p className="text-[#414141] text-[18px] font-medium">
-                  No 812, 6th cross <br />
-                  Indiranagar stage 3 <br />
-                  Bangalore 560036 <br />
-                  Karnataka <br /> India
+                  {line1}, {line2} <br />
+                  {area} <br />
+                  {state} <span>{pincode}</span> <br />
+                  {city} <br /> {country}
                 </p>
               </div>
               <div className="mb-4">
@@ -71,7 +99,7 @@ const InstituteDetailsModal = ({ setShowModal }) => {
                   Contact details
                 </p>
                 <p className="text-[#414141] text-[18px] font-medium">
-                  9878767654
+                  {phonenumber}
                 </p>
               </div>
               <div className="mb-4">
@@ -79,9 +107,9 @@ const InstituteDetailsModal = ({ setShowModal }) => {
                   Owner details
                 </p>
                 <p className="text-[#414141] text-[18px] font-medium">
-                  Rajbir Ostello <br />
-                  raj1234@ostello.tech <br />
-                  9898976879
+                  {owner.name} <br />
+                  {owner.email} <br />
+                  {owner.phonenumber}
                 </p>
               </div>
               <div className="mb-4">
@@ -101,14 +129,20 @@ const InstituteDetailsModal = ({ setShowModal }) => {
                 <p className="text-[#414141] text-[14px] font-medium uppercase">
                   skill based
                 </p>
-                <div className="text-[#414141] flex gap-x-4 mt-2 text-[17px]">
-                  <button className="py-2 px-3 rounded-lg border-2 border-[#A4A4A4]">
-                    Marketing
-                  </button>
-                  <button className="py-2 px-3 rounded-lg border-2 border-[#A4A4A4]">
-                    Coding
-                  </button>
-                </div>
+                {skills.length ? (
+                  <div className="text-[#414141] flex gap-x-4 mt-2 text-[17px]">
+                    <button className="py-2 px-3 rounded-lg border-2 border-[#A4A4A4]">
+                      Marketing
+                    </button>
+                    <button className="py-2 px-3 rounded-lg border-2 border-[#A4A4A4]">
+                      Coding
+                    </button>
+                  </div>
+                ) : (
+                  <p className="text-[#767676] text-[14px] font-medium capitalize">
+                    no skill avaiable
+                  </p>
+                )}
               </div>
               <div className="mb-4">
                 <p className="text-[#414141] text-[14px] font-medium uppercase">
@@ -162,15 +196,33 @@ const InstituteDetailsModal = ({ setShowModal }) => {
               </div>
             </div>
             {/*footer*/}
-            <div className="flex items-center justify-between p-6 border-solid border-slate-200 rounded-b">
-              <button className="border bg-[#7D23E0] md:px-12 p-2 md:py-3 font-bold rounded-lg text-white">
+            <div className="flex items-center justify-around p-6 border-solid border-slate-200 rounded-b">
+              <button
+                onClick={() => {
+                  handleAccept(3);
+                  setShowModal(false);
+                }}
+                className="border bg-[#7D23E0] md:px-12 py-2 px-4 md:py-3 font-bold rounded-lg text-white"
+              >
                 Accept
               </button>
-              <button className="border bg-[#E46060] md:px-12 p-2 md:py-3 font-bold rounded-lg text-white">
+              <button
+                onClick={() => {
+                  handleAccept(2);
+                  setShowModal(false);
+                }}
+                className="border bg-[#E46060] md:px-12 py-2 px-4 md:py-3 font-bold rounded-lg text-white"
+              >
                 Decline
               </button>
-              <button className="border bg-[#F0F0F0]  md:px-10 p-2 md:py-3 font-bold rounded-lg text-[#525252]">
-                Waiting List
+              <button
+                onClick={() => {
+                  handleAccept(1);
+                  setShowModal(false);
+                }}
+                className="border bg-[#F0F0F0]  md:px-16 py-2 px-4 md:py-3 font-bold rounded-lg text-[#525252]"
+              >
+                Edit
               </button>
             </div>
           </div>

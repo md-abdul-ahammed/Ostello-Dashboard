@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaSortAmountUp } from "react-icons/fa";
 import { FaFilter } from "react-icons/fa";
 import {
@@ -11,6 +11,8 @@ import { BsFillCircleFill } from "react-icons/bs";
 import profile from "../../util/assets/images/active2.png";
 import banner from "../../util/assets/images/banner.png";
 import CourseDetailsModal from "../Modal/CourseDetailsModal/CourseDetailsModal";
+import { useSelector, useDispatch } from "react-redux";
+import { getInstitutes } from "../../actions/InstituteAction";
 
 const allData = [
   {
@@ -108,6 +110,10 @@ const CourseRequests = () => {
   const [show, setShow] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
+  const dispatch = useDispatch();
+  const { loading, institutes } = useSelector((state) => state.institutes);
+  const [institute, setInstitute] = useState({});
+
   const showCourse = (index) => {
     if (open === index) {
       if (!show) {
@@ -120,6 +126,11 @@ const CourseRequests = () => {
     setOpen(index);
     setShow(true);
   };
+
+  useEffect(() => {
+    dispatch(getInstitutes());
+  }, [dispatch]);
+  console.log(institute);
 
   return (
     <div className="bg-white mb-12 shadow-lg md:shadow-none rounded-lg md:border border-0 py-5">
@@ -145,21 +156,17 @@ const CourseRequests = () => {
           </p>
         </div>
         <div className="md:grid md:grid-cols-1 md:border-b md:divide-y">
-          {allData.map((data, index) => (
+          {institutes.map((data, index) => (
             <div key={index} className="md:px-8 px-4 py-6 md:py-6">
               <div className="flex justify-between items-center">
-                <div className="flex gap-x-3 items-center">
-                  <img
-                    className="md:w-[40px] w-[45px] "
-                    src={data.img}
-                    alt=""
-                  />
+                <div className="flex gap-x-3 items-center w-[50%]">
+                  <img className="md:w-[40px] w-[45px] " src={profile} alt="" />
                   <div>
                     <h4 className="uppercase text-[13px] font-semibold">
                       {data.name}
                     </h4>
                     <p className="text-[12px] text-[#7D23E0]">
-                      {data.totalCourses} new courses
+                      {data.courses.length} new courses
                     </p>
                   </div>
                 </div>
@@ -180,52 +187,58 @@ const CourseRequests = () => {
                   )}
                 </div>
               </div>
-              {open === index && show && (
-                <div className="border mt-6 rounded-lg">
-                  <div className="grid grid-cols-1 divide-y">
-                    {data.courses.map((course) => (
-                      <div className="md:p-5 p-2 ">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center w-full gap-x-3 md:gap-x-5">
-                            <img
-                              className="md:h-auto h-[122px]"
-                              src={course.img}
-                              alt=""
-                            />
-                            <div className="flex md:justify-between justify-center md:flex-row flex-col md:items-center w-full">
-                              <div>
-                                <h3 className="capitalize font-bold md:text-[24px] text-[18px]">
-                                  {course.title}
-                                </h3>
-                                <p className="capitalize text-[#767676]">
-                                  {course.name}
-                                </p>
-                                <div className="flex md:mt-1 mb-2 mt-[-4px] items-center">
-                                  <BsFillCircleFill className="text-[6px] text-[#3AC817]" />
-                                  <span className="ml-2 text-[14px] text-[#414141]">
-                                    Online
-                                  </span>
+              {open === index &&
+                show &&
+                (data.courses.length ? (
+                  <div className="border mt-6 rounded-lg">
+                    <div className="grid grid-cols-1 divide-y">
+                      {data.courses.map((course) => (
+                        <div className="md:p-5 p-2 ">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center w-full gap-x-3 md:gap-x-5">
+                              <img
+                                className="md:h-auto h-[122px]"
+                                src={banner}
+                                alt=""
+                              />
+                              <div className="flex md:justify-between justify-center md:flex-row flex-col md:items-center w-full">
+                                <div>
+                                  <h3 className="capitalize font-bold md:text-[24px] text-[18px]">
+                                    {course.name}
+                                  </h3>
+                                  <p className="capitalize text-[#767676]">
+                                    {data.name}
+                                  </p>
+                                  <div className="flex md:mt-1 mb-2 mt-[-4px] items-center">
+                                    <BsFillCircleFill className="text-[6px] text-[#3AC817]" />
+                                    <span className="ml-2 text-[14px] text-[#414141]">
+                                      Online
+                                    </span>
+                                  </div>
                                 </div>
-                              </div>
-                              <div className="flex items-center md:gap-x-3 gap-x-2">
-                                <button
-                                  onClick={() => setShowModal(true)}
-                                  className="bg-[#7D23E0] cursor-pointer md:px-5 px-[0.8rem]  rounded-lg text-[#ffffff] font-medium py-1"
-                                >
-                                  Review
-                                </button>
-                                <button className="bg-[#F0F0F0] cursor-pointer md:px-5 px-[0.8rem] rounded-lg text-[#868686] font-medium py-1">
-                                  Accept
-                                </button>
+                                <div className="flex items-center md:gap-x-3 gap-x-2">
+                                  <button
+                                    onClick={() => setShowModal(true)}
+                                    className="bg-[#7D23E0] cursor-pointer md:px-5 px-[0.8rem]  rounded-lg text-[#ffffff] font-medium py-1"
+                                  >
+                                    Review
+                                  </button>
+                                  <button className="bg-[#F0F0F0] cursor-pointer md:px-5 px-[0.8rem] rounded-lg text-[#868686] font-medium py-1">
+                                    Accept
+                                  </button>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
+                ) : (
+                  <div className="text-[#868686] mt-2 ml-3">
+                    No course available
+                  </div>
+                ))}
             </div>
           ))}
         </div>

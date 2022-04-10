@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Card from "../Card/Card";
+import EventCard from "../Card/EventCard";
 import PageHeader from "../PageHeader/PageHeader";
 import eventImage from "../../util/assets/images/event.png";
 import DeleteIcon from "../DeleteIcon/DeleteIcon";
@@ -84,7 +84,7 @@ const ActiveEvents = () => {
           {allData.map((data, index) => (
             <div key={index} className="relative">
               <Link to="/dashboard/events/editEvent">
-                <Card data={data} />
+                <EventCard data={data} />
               </Link>
               <div className="absolute top-8 right-8 bg-white p-2.5 shadow-lg cursor-pointer rounded-full">
                 <DeleteIcon />

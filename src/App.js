@@ -10,10 +10,12 @@ import Students from "./Pages/Dashboard/Students/Students";
 import Coupons from "./Pages/Dashboard/Coupons/Coupons";
 import Careers from "./Pages/Dashboard/Careers/Careers";
 import InstituteRequests from "./components/InstituteRequests/InstituteRequests";
-import WaitingList from "./components/WaitingList/WaitingList";
+import ChangesRequest from "./components/ChangesRequest/ChangesRequest";
 import CourseRequests from "./components/CourseRequests/CourseRequests";
+import RejectedList from "./components/RejectedList/RejectedList.js";
 import ActiveBlogs from "./components/ActiveBlogs/ActiveBlogs";
 import AddBlog from "./components/AddBlog/AddBlog";
+import EditBlog from "./components/EditBlog/EditBlog";
 import ActiveEvents from "./components/ActiveEvents/ActiveEvents";
 import AddEvent from "./components/AddEvent/AddEvent";
 import EditEvent from "./components/EditEvent/EditEvent";
@@ -39,8 +41,9 @@ function App() {
           <Route path="overview" element={<Overview />} />
           <Route path="requests/*" element={<Requests />}>
             <Route path="instituteRequests" element={<InstituteRequests />} />
-            <Route path="waitingList" element={<WaitingList />} />
+            <Route path="changesRequest" element={<ChangesRequest />} />
             <Route path="courseRequests" element={<CourseRequests />} />
+            <Route path="rejectedList" element={<RejectedList />} />
           </Route>
           <Route path="institutes" element={<Institutes />} />
           <Route path="students" element={<Students />} />
@@ -48,6 +51,7 @@ function App() {
           <Route path="blogs/*" element={<Blogs />}>
             <Route path="activeBlogs" element={<ActiveBlogs />} />
             <Route path="addBlog" element={<AddBlog />} />
+            <Route path="editBlog" element={<EditBlog />} />
           </Route>
           <Route path="events/*" element={<Events />}>
             <Route path="activeEvents" element={<ActiveEvents />} />

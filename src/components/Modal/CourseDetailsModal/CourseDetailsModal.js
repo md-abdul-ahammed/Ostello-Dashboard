@@ -76,7 +76,7 @@ const CourseDetailsModal = ({ setShowModal }) => {
               </button>
             </div>
             {/*body*/}
-            <div className="relative px-6 h-[400px] overflow-y-auto scrollbar-hide flex-auto">
+            <div className="relative px-6 h-[60vh] overflow-y-auto scrollbar-hide flex-auto">
               <div className="mb-4">
                 <p className="text-[#767676] text-[14px] font-medium uppercase">
                   Course name
@@ -322,12 +322,15 @@ const CourseDetailsModal = ({ setShowModal }) => {
               </div>
             </div>
             {/*footer*/}
-            <div className="flex items-center justify-center gap-x-5 p-6 border-solid border-slate-200 rounded-b">
-              <button className="border bg-[#7D23E0] md:px-20 px-8 py-2 md:py-3 font-bold rounded-lg text-white">
+            <div className="flex items-center justify-between p-6 border-solid border-slate-200 rounded-b">
+              <button className="border bg-[#7D23E0] md:px-8 px-4 py-2 md:py-3 font-bold rounded-lg text-white">
                 Accept
               </button>
-              <button className="border bg-[#E46060] md:px-20 px-8 py-2 md:py-3 font-bold rounded-lg text-white">
+              <button className="border bg-[#E46060] md:px-8 px-4 py-2 md:py-3 font-bold rounded-lg text-white">
                 Decline
+              </button>
+              <button className="border bg-[#F0F0F0] md:px-8 px-4 py-2 md:py-3 font-bold rounded-lg text-[#414141]">
+                Edit
               </button>
             </div>
           </div>
