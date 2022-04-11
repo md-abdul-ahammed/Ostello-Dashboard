@@ -22,10 +22,10 @@ export const getInstitutes = () => async (dispatch) => {
   }
 };
 
-// Update Product
-export const updateInstitute = (id, instituteData) => async (dispatch) => {
+// Update Institute
+export const updateInstitute = (instituteData) => async (dispatch) => {
   try {
-    dispatch({ type: INSTITUTE_UPDATE_REQUEST });
+    dispatch({ type: INSTITUTE_UPDATE_REQUEST, payload: "processing" });
     const config = {
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -36,7 +36,13 @@ export const updateInstitute = (id, instituteData) => async (dispatch) => {
     const { data } = await axios.patch(url, instituteData, config);
     dispatch({
       type: INSTITUTE_UPDATE_SUCCESS,
-      payload: data.success,
+      payload: data.message,
+    });
+    dispatch({ type: ALL_INSTITUTE_REQUEST });
+    const fatchData = await axios.get("https://api.ostello.co.in/institute/");
+    dispatch({
+      type: ALL_INSTITUTE_SUCCESS,
+      payload: fatchData.data.message,
     });
   } catch (error) {
     dispatch({

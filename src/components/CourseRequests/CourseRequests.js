@@ -192,8 +192,8 @@ const CourseRequests = () => {
                 (data.courses.length ? (
                   <div className="border mt-6 rounded-lg">
                     <div className="grid grid-cols-1 divide-y">
-                      {data.courses.map((course) => (
-                        <div className="md:p-5 p-2 ">
+                      {data.courses.map((course, index) => (
+                        <div key={index} className="md:p-5 p-2 ">
                           <div className="flex items-center justify-between">
                             <div className="flex items-center w-full gap-x-3 md:gap-x-5">
                               <img

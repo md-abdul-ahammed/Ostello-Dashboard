@@ -7,13 +7,17 @@ import { useSelector, useDispatch } from "react-redux";
 const InstituteRequests = () => {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
-  const { loading, institutes } = useSelector((state) => state.institutes);
+  const { loading, institutes, error, isUpdated } = useSelector(
+    (state) => state.institutes
+  );
+
+  console.log(isUpdated);
+
   const [institute, setInstitute] = useState({});
 
   useEffect(() => {
     dispatch(getInstitutes());
-  }, [dispatch]);
-  console.log(institute);
+  }, [dispatch, isUpdated]);
 
   return (
     <>

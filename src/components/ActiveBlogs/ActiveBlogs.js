@@ -2,90 +2,17 @@ import React, { useEffect, useState } from "react";
 import Card from "../Card/Card";
 import PageHeader from "../PageHeader/PageHeader";
 import DeleteIcon from "../DeleteIcon/DeleteIcon";
-
-// const allData = [
-//   {
-//     title:
-//       "The blog title will come here in multiple lines as you can see here in this",
-//     desc: "The blog title will come here in multiple lines as you can see here in this... ",
-//     date: "20 Nov 2021",
-//     reading_time: 5,
-//     img: blogImage,
-//   },
-//   {
-//     title:
-//       "The blog title will come here in multiple lines as you can see here in this",
-//     desc: "The blog title will come here in multiple lines as you can see here in this... ",
-//     date: "20 Nov 2021",
-//     reading_time: 5,
-//     img: blogImage,
-//   },
-//   {
-//     title:
-//       "The blog title will come here in multiple lines as you can see here in this",
-//     desc: "The blog title will come here in multiple lines as you can see here in this... ",
-//     date: "20 Nov 2021",
-//     reading_time: 5,
-//     img: blogImage,
-//   },
-//   {
-//     title:
-//       "The blog title will come here in multiple lines as you can see here in this",
-//     desc: "The blog title will come here in multiple lines as you can see here in this... ",
-//     date: "20 Nov 2021",
-//     reading_time: 5,
-//     img: blogImage,
-//   },
-//   {
-//     title:
-//       "The blog title will come here in multiple lines as you can see here in this",
-//     desc: "The blog title will come here in multiple lines as you can see here in this... ",
-//     date: "20 Nov 2021",
-//     reading_time: 5,
-//     img: blogImage,
-//   },
-//   {
-//     title:
-//       "The blog title will come here in multiple lines as you can see here in this",
-//     desc: "The blog title will come here in multiple lines as you can see here in this... ",
-//     date: "20 Nov 2021",
-//     reading_time: 5,
-//     img: blogImage,
-//   },
-//   {
-//     title:
-//       "The blog title will come here in multiple lines as you can see here in this",
-//     desc: "The blog title will come here in multiple lines as you can see here in this... ",
-//     date: "20 Nov 2021",
-//     reading_time: 5,
-//     img: blogImage,
-//   },
-//   {
-//     title:
-//       "The blog title will come here in multiple lines as you can see here in this",
-//     desc: "The blog title will come here in multiple lines as you can see here in this... ",
-//     date: "20 Nov 2021",
-//     reading_time: 5,
-//     img: blogImage,
-//   },
-//   {
-//     title:
-//       "The blog title will come here in multiple lines as you can see here in this",
-//     desc: "The blog title will come here in multiple lines as you can see here in this... ",
-//     date: "20 Nov 2021",
-//     reading_time: 5,
-//     img: blogImage,
-//   },
-// ];
+import { useDispatch, useSelector } from "react-redux";
+import { getAllBlogs } from "../../actions/blogAction";
 
 const ActiveBlogs = () => {
-  const [blogs, setBlogs] = useState([]);
+  const dispatch = useDispatch();
+
+  const { loading, blogs } = useSelector((state) => state.blogs);
 
   useEffect(() => {
-    fetch("https://api.ostello.co.in/blog").then((res) =>
-      res.json().then((data) => setBlogs(data))
-    );
-  }, []);
+    dispatch(getAllBlogs());
+  }, [dispatch]);
 
   return (
     <div>

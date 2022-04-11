@@ -256,7 +256,7 @@ const CourseDetailsModal = ({ setShowModal }) => {
                   {/* accordian add here */}
                   <div className="bg-white">
                     {allData.map((data, index) => (
-                      <>
+                      <div key={index}>
                         <div
                           key={index}
                           className="md:px-6 px-3 bg-[#F0F0F0] rounded-lg mt-5  py-2"
@@ -280,7 +280,7 @@ const CourseDetailsModal = ({ setShowModal }) => {
                             {data.description}
                           </div>
                         )}
-                      </>
+                      </div>
                     ))}
                   </div>
                 </div>

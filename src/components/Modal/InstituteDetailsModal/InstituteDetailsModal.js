@@ -1,7 +1,12 @@
 import React from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import {
+  getInstitutes,
+  updateInstitute,
+} from "../../../actions/InstituteAction";
 
-const InstituteDetailsModal = ({ institute, from, setShowModal }) => {
+const InstituteDetailsModal = ({ institute, setReFetch, setShowModal }) => {
   const {
     name,
     description,
@@ -15,20 +20,14 @@ const InstituteDetailsModal = ({ institute, from, setShowModal }) => {
   const { city, line1, line2, area, country, pincode, state } =
     JSON.parse(address);
   const { skills } = JSON.parse(services);
+  const dispatch = useDispatch();
 
   const handleAccept = (value) => {
-    const patchData = {
+    const updatedData = {
       id,
       approve: approval - Number(value),
     };
-    const config = {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        Authorization: `Bearer ${window.localStorage.getItem("access_token")}`,
-      },
-    };
-    const url = "https://api.ostello.co.in/institute/approve";
-    axios.patch(url, patchData, config);
+    dispatch(updateInstitute(updatedData));
   };
 
   return (
