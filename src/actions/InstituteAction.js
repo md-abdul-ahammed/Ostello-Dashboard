@@ -7,6 +7,9 @@ import {
   INSTITUTE_UPDATE_REQUEST,
   INSTITUTE_UPDATE_SUCCESS,
   INSTITUTE_UPDATE_FAIL,
+  INSTITUTE_DETAILS_REQUEST,
+  INSTITUTE_DETAILS_SUCCESS,
+  INSTITUTE_DETAILS_FAIL,
 } from "../constants/instituteConstants";
 
 export const getInstitutes = () => async (dispatch) => {
@@ -52,6 +55,32 @@ export const updateInstitute = (instituteData) => async (dispatch) => {
   }
 };
 
+// Update Single
+export const getInstituteDetails = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: INSTITUTE_DETAILS_REQUEST });
+    const { data } = await axios.get(
+      `https://api.ostello.co.in/institute?id=${id}`
+    );
+    dispatch({ type: INSTITUTE_DETAILS_SUCCESS, payload: data.message });
+  } catch (error) {
+    dispatch({
+      type: INSTITUTE_DETAILS_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
 export const clearErrors = () => async (dispatch) => {
   dispatch({ type: CLEAR_ERRORS });
+};
+
+// add new location
+export const addNewLocation = (data) => async (dispatch) => {
+  try {
+    dispatch({
+      type: "ADD_TO_LOCATION",
+      payload: data,
+    });
+  } catch (error) {}
 };

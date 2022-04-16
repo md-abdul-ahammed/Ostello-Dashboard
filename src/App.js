@@ -19,6 +19,8 @@ import EditBlog from "./components/EditBlog/EditBlog";
 import ActiveEvents from "./components/ActiveEvents/ActiveEvents";
 import AddEvent from "./components/AddEvent/AddEvent";
 import EditEvent from "./components/EditEvent/EditEvent";
+import EditInstitute from "./components/EditInstitute/EditInstitute";
+import EditCourse from "./components/EditCourse/EditCourse";
 
 function App() {
   return (
@@ -37,6 +39,8 @@ function App() {
           path="/dashboard/events"
           element={<Navigate to="/dashboard/events/activeEvents" />}
         />
+        <Route path="/editInstitute/:instituteId" element={<EditInstitute />} />
+        <Route path="/editCourse" element={<EditCourse />} />
         <Route path="/dashboard/*" element={<Dashboard />}>
           <Route path="overview" element={<Overview />} />
           <Route path="requests/*" element={<Requests />}>

@@ -18,7 +18,7 @@ const EditEvent = () => {
         <div className="flex flex-col gap-y-3">
           <input
             type="text"
-            className="w-full px-6 bg-[#FAFAFA] border-2 border-[#A4A4A4] placeholder:text-[#A8A8A8]  text-[#A8A8A8] rounded-lg"
+            className="w-full px-6 bg-[#FAFAFA] min-h-screen border-2 border-[#A4A4A4] placeholder:text-[#A8A8A8]  text-[#A8A8A8] rounded-lg"
             placeholder="Enter blog title*"
           />
           <div className="relative w-full md:w-[50%] lg:w-[35%] p-3 border-2 text-[#A8A8A8] h-[280px] overflow-hidden rounded-lg border-[#A4A4A4]">

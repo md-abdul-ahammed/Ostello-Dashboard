@@ -1,10 +1,7 @@
 import React from "react";
-import axios from "axios";
 import { useDispatch } from "react-redux";
-import {
-  getInstitutes,
-  updateInstitute,
-} from "../../../actions/InstituteAction";
+import { updateInstitute } from "../../../actions/InstituteAction";
+import { Link } from "react-router-dom";
 
 const InstituteDetailsModal = ({ institute, setReFetch, setShowModal }) => {
   const {
@@ -214,15 +211,12 @@ const InstituteDetailsModal = ({ institute, setReFetch, setShowModal }) => {
               >
                 Decline
               </button>
-              <button
-                onClick={() => {
-                  handleAccept(1);
-                  setShowModal(false);
-                }}
+              <Link
+                to={`/editInstitute/${id}`}
                 className="border bg-[#F0F0F0]  md:px-16 py-2 px-4 md:py-3 font-bold rounded-lg text-[#525252]"
               >
                 Edit
-              </button>
+              </Link>
             </div>
           </div>
         </div>
