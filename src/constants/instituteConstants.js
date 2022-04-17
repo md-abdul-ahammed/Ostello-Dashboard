@@ -19,4 +19,13 @@ export const INSTITUTE_DETAILS_REQUEST = "INSTITUTE_DETAILS_REQUEST";
 export const INSTITUTE_DETAILS_SUCCESS = "INSTITUTE_DETAILS_SUCCESS";
 export const INSTITUTE_DETAILS_FAIL = "INSTITUTE_DETAILS_FAIL";
 
+// add new location on edit institute page
+export const ADD_NEW_LOCATION = "ADD_NEW_LOCATION";
+
+// add new faculty on edit institute page
+export const ADD_NEW_FACULTY = "ADD_NEW_FACULTY";
+
+// add new achievement on edit institute page
+export const ADD_NEW_ACHIEVEMENT = "ADD_NEW_ACHIEVEMENT";
+
 export const CLEAR_ERRORS = "CLEAR_ERRORS";

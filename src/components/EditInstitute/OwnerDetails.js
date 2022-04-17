@@ -8,8 +8,8 @@ const OwnerDetails = ({ handleChange }) => {
   const { name, email, phonenumber } = owner;
 
   return (
-    <div>
-      <div className="flex gap-x-8 justify-between">
+    <div className="my-3">
+      <div className="flex flex-col md:flex-row md:gap-x-8 justify-between">
         <InputField
           defaultValue={name}
           label={"Owner Name"}
@@ -25,7 +25,7 @@ const OwnerDetails = ({ handleChange }) => {
         />
       </div>
       <div className="flex justify-between">
-        <div className="w-[48%]">
+        <div className="md:w-[48%] w-full">
           <InputField
             defaultValue={email}
             setOnchange={handleChange}

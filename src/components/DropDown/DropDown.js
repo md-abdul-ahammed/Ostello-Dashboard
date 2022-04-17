@@ -1,15 +1,23 @@
 import React, { useState } from "react";
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
+import AddAchievementModal from "../Modal/AddAchievementModal/AddAchievementModal";
+import AddFacultyModal from "../Modal/AddFacultyModal/AddFacultyModal";
 import AddLocationModal from "../Modal/AddLocationModal/AddLocationModal";
 
 const DropDown = ({ children, title }) => {
   const [show, setShow] = useState(false);
   const [addLocation, setAddLocation] = useState(false);
+  const [addFaculty, setAddFaculty] = useState(false);
+  const [addAchievement, setAddAchievement] = useState(false);
 
   return (
-    <div className="flex my-5 flex-col">
+    <div
+      className={`flex ${
+        show && "bg-[#f4f4f4]"
+      } md:border-none border-2 md:bg-transparent border-[#7D23E0] my-3 mx-3 px-3 py-2 rounded-lg flex-col`}
+    >
       <div className="flex justify-between">
-        <div className="flex items-center gap-x-3">
+        <div className="flex items-center md:justify-start justify-between md:w-fit w-full gap-x-3">
           <h5 className="text-[24px] capitalize ml-3 md:ml-0 font-medium text-[#414141]">
             {title}
           </h5>{" "}
@@ -28,24 +36,34 @@ const DropDown = ({ children, title }) => {
         {title === "Manage locations" && (
           <button
             onClick={() => setAddLocation(true)}
-            className="text-[14px] px-5 py-1 rounded-full text-white bg-[#7D23E0]"
+            className="text-[14px] md:block hidden none px-5 py-1 rounded-full text-white bg-[#7D23E0]"
           >
             + Add Location
           </button>
         )}
         {title === "Faculty" && (
-          <button className="text-[14px] px-5 py-1 rounded-full text-white bg-[#7D23E0]">
+          <button
+            onClick={() => setAddFaculty(true)}
+            className="text-[14px] md:block hidden px-5 py-1 rounded-full text-white bg-[#7D23E0]"
+          >
             + Add Faculty
           </button>
         )}
         {title === "Achievements" && (
-          <button className="text-[14px] px-5 py-1 rounded-full text-white bg-[#7D23E0]">
+          <button
+            onClick={() => setAddAchievement(true)}
+            className="text-[14px] md:block hidden px-5 py-1 rounded-full text-white bg-[#7D23E0]"
+          >
             + Add Achievements
           </button>
         )}
       </div>
       {show && <div>{children}</div>}
       {addLocation && <AddLocationModal setAddLocation={setAddLocation} />}
+      {addFaculty && <AddFacultyModal setAddFaculty={setAddFaculty} />}
+      {addAchievement && (
+        <AddAchievementModal setAddAchievement={setAddAchievement} />
+      )}
     </div>
   );
 };

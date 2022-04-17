@@ -78,11 +78,11 @@ const EditInstitute = () => {
   };
 
   return (
-    <div className="flex min-h-screen overflow-hidden">
-      <div className="w-[180px] ">
+    <div className="flex md:flex-row flex-col min-h-screen overflow-hidden">
+      <div className="md:w-[180px] bg-white md:bg-transparent drop-shadow-sm w-full">
         <div
           onClick={goBack}
-          className="p-5 mt-5 flex cursor-pointer text-lg font-medium items-center"
+          className="p-5 md:mt-5 mt-0 flex cursor-pointer text-lg font-medium items-center"
         >
           <MdOutlineKeyboardArrowLeft className="mr-2" /> Back
         </div>
@@ -91,21 +91,24 @@ const EditInstitute = () => {
         <div className="w-[93%]">
           <Header pageTitle={"Institutes"} />
         </div>
-        <form onSubmit={handleSubmit} className="ml-[30px] mr-[190px]">
+        <form
+          onSubmit={handleSubmit}
+          className="md:ml-[30px] ml-0 mr-0 md:mr-[190px]"
+        >
           {allData.map((data, index) => (
             <DropDown key={index} title={data.title}>
               {data.component}
             </DropDown>
           ))}
-          <div className="mb-12 flex gap-x-8 justify-center mt-6">
+          <div className="mb-12 flex flex-col md:flex-row px-3  gap-x-8 justify-center mt-6">
             <button
-              className="bg-[#7D23E0] text-white rounded-lg py-2 px-5"
+              className="bg-[#7D23E0] text-white mb-3 rounded-lg md:py-2 py-3 px-5"
               type="submit"
             >
               Accept Changes
             </button>
             <button
-              className="bg-[#E46060] text-white rounded-lg py-2 px-5"
+              className="bg-[#E46060] text-white rounded-lg md:py-2 py-3 py-2 px-5"
               onClick={goBack}
             >
               Cancel Changes

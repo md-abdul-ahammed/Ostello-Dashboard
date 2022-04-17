@@ -14,6 +14,9 @@ import {
   INSTITUTE_DETAILS_REQUEST,
   INSTITUTE_DETAILS_SUCCESS,
   INSTITUTE_DETAILS_FAIL,
+  ADD_NEW_LOCATION,
+  ADD_NEW_ACHIEVEMENT,
+  ADD_NEW_FACULTY,
 } from "../constants/instituteConstants";
 
 //get all institutes
@@ -113,12 +116,39 @@ export const instituteDetailsReducer = (state = { institute: [] }, action) => {
       return state;
   }
 };
-
-export const addLocationReducer = (state = { location: [] }, action) => {
+// for adding new location
+export const addNewLocationReducer = (state = { location: [] }, action) => {
   switch (action.type) {
-    case "ADD_TO_LOCATION":
+    case ADD_NEW_LOCATION:
       return {
         location: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+// for adding new faculty
+export const addNewFacultyReducer = (state = { faculty: [] }, action) => {
+  switch (action.type) {
+    case ADD_NEW_FACULTY:
+      return {
+        faculty: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+// for adding new faculty
+export const addNewAchievementReducer = (
+  state = { achievement: [] },
+  action
+) => {
+  switch (action.type) {
+    case ADD_NEW_ACHIEVEMENT:
+      return {
+        achievement: action.payload,
       };
     default:
       return state;

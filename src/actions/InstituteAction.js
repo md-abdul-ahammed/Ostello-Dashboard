@@ -10,6 +10,9 @@ import {
   INSTITUTE_DETAILS_REQUEST,
   INSTITUTE_DETAILS_SUCCESS,
   INSTITUTE_DETAILS_FAIL,
+  ADD_NEW_LOCATION,
+  ADD_NEW_FACULTY,
+  ADD_NEW_ACHIEVEMENT,
 } from "../constants/instituteConstants";
 
 export const getInstitutes = () => async (dispatch) => {
@@ -71,16 +74,36 @@ export const getInstituteDetails = (id) => async (dispatch) => {
   }
 };
 
-export const clearErrors = () => async (dispatch) => {
-  dispatch({ type: CLEAR_ERRORS });
-};
-
 // add new location
 export const addNewLocation = (data) => async (dispatch) => {
   try {
     dispatch({
-      type: "ADD_TO_LOCATION",
+      type: ADD_NEW_LOCATION,
       payload: data,
     });
   } catch (error) {}
+};
+
+// add new faculty
+export const addNewFaculty = (data) => async (dispatch) => {
+  try {
+    dispatch({
+      type: ADD_NEW_FACULTY,
+      payload: data,
+    });
+  } catch (error) {}
+};
+
+// add new achievement
+export const addNewAchievement = (data) => async (dispatch) => {
+  try {
+    dispatch({
+      type: ADD_NEW_ACHIEVEMENT,
+      payload: data,
+    });
+  } catch (error) {}
+};
+
+export const clearErrors = () => async (dispatch) => {
+  dispatch({ type: CLEAR_ERRORS });
 };

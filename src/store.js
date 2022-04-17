@@ -2,7 +2,9 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import {
-  addLocationReducer,
+  addNewAchievementReducer,
+  addNewFacultyReducer,
+  addNewLocationReducer,
   instituteDetailsReducer,
   institutesReducer,
 } from "./reducers/InstituteReducer";
@@ -12,7 +14,9 @@ const reducer = combineReducers({
   institutes: institutesReducer,
   blogs: blogReducer,
   institute: instituteDetailsReducer,
-  location: addLocationReducer,
+  location: addNewLocationReducer,
+  faculty: addNewFacultyReducer,
+  achievement: addNewAchievementReducer,
 });
 
 let initialState = {};

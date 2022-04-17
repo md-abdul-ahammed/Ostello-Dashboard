@@ -32,13 +32,13 @@ const AddLocationModal = ({ setAddLocation }) => {
       area,
     };
     location.push(newLocation);
-
     dispatch(addNewLocation(location));
+    setAddLocation(false);
   };
   return (
     <>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-        <div className="relative w-[27%] w mb-6 mx-auto max-w-6xl">
+        <div className="relative md:w-[27%] w-[90%] w mb-6 mx-auto max-w-6xl">
           {/*content*/}
           <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
             {/*header*/}
@@ -59,7 +59,7 @@ const AddLocationModal = ({ setAddLocation }) => {
               {error && <div className="text-[14px] text-red-500">{error}</div>}
             </div>
             {/*body*/}
-            <div className="relative px-6 h-[50vh] overflow-y-auto scrollbar-hide flex-auto">
+            <div className="relative px-6 md:h-[50vh] h-[65vh] overflow-y-auto scrollbar-hide flex-auto">
               <div className="flex flex-col">
                 <input
                   onChange={(e) => setLine1(e.target.value)}
@@ -108,10 +108,7 @@ const AddLocationModal = ({ setAddLocation }) => {
             {/*footer*/}
             <div className="p-5 border-solid border-slate-200 rounded-b">
               <button
-                onClick={() => {
-                  handleOnSubmit();
-                  setAddLocation(false);
-                }}
+                onClick={() => handleOnSubmit()}
                 className="border  bg-[#7D23E0] w-full md:px-12 py-2 px-4 md:py-3 font-bold rounded-lg text-white"
               >
                 Save

@@ -8,8 +8,8 @@ const BankingDetails = ({ handleChange }) => {
   // const { name, email, phonenumber } = owner;
 
   return (
-    <div>
-      <div className="flex gap-x-8 justify-between">
+    <div className="my-5">
+      <div className="flex flex-col md:flex-row gap-x-8 justify-between">
         <InputField
           defaultValue={"5674 6578 7568 7564"}
           label={"Bank Account No"}
@@ -23,7 +23,7 @@ const BankingDetails = ({ handleChange }) => {
           title="bankName"
         />
       </div>
-      <div className="flex gap-x-8 justify-between">
+      <div className="flex flex-col md:flex-row gap-x-8 justify-between">
         <InputField
           defaultValue={"1234NAZ1"}
           label={"IFSC Code"}

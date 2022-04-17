@@ -10,8 +10,8 @@ const BasicDetails = ({ handleChange }) => {
   const { name, email, phonenumber, description } = institute;
 
   return (
-    <div>
-      <div className="flex gap-x-8 justify-between">
+    <div className="md:my-0 my-3">
+      <div className="flex gap-x-8 flex-col md:flex-row justify-between">
         <InputField
           setOnchange={handleChange}
           defaultValue={name}
@@ -26,8 +26,10 @@ const BasicDetails = ({ handleChange }) => {
           title="phonenumber"
         />
       </div>
-      <div className="bg-white px-6 rounded-xl my-4 border border-[#C8C8C8] py-2 w-full">
-        <p className="text-[14px]">Overview</p>
+      <div className="bg-white px-6 rounded-xl md:my-4 my-1 border border-[#C8C8C8] py-2 w-full">
+        <p className="text-[14px] md:text-black text-[#979797] md:font-normal font-bold">
+          Overview
+        </p>
         <textarea
           defaultValue={description}
           onChange={handleChange}
@@ -36,7 +38,7 @@ const BasicDetails = ({ handleChange }) => {
           className="border-0 text-[#000000] text-[18px] focus:ring-0 p-0 w-full"
         />
       </div>
-      <div className="flex gap-x-8 justify-between">
+      <div className="flex md:flex-row flex-col gap-x-8 justify-between">
         <InputField
           defaultValue={email}
           label={"Institute Email"}
@@ -50,7 +52,7 @@ const BasicDetails = ({ handleChange }) => {
         />
       </div>
       <div className="flex justify-between">
-        <div className="w-[48%]">
+        <div className="md:w-[48%] w-full">
           <InputField defaultValue={"Hybrid"} label={"TypeofInstitute"} />
         </div>
       </div>
