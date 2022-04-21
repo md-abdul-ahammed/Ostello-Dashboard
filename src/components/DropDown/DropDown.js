@@ -3,8 +3,9 @@ import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 import AddAchievementModal from "../Modal/AddAchievementModal/AddAchievementModal";
 import AddFacultyModal from "../Modal/AddFacultyModal/AddFacultyModal";
 import AddLocationModal from "../Modal/AddLocationModal/AddLocationModal";
+import { BiEditAlt } from "react-icons/bi";
 
-const DropDown = ({ children, title }) => {
+const DropDown = ({ children, title, setEdit, edit }) => {
   const [show, setShow] = useState(false);
   const [addLocation, setAddLocation] = useState(false);
   const [addFaculty, setAddFaculty] = useState(false);
@@ -56,6 +57,18 @@ const DropDown = ({ children, title }) => {
           >
             + Add Achievements
           </button>
+        )}
+        {title === "Student Basic Details" && (
+          <div className="md:block hidden">
+            {!edit && (
+              <button
+                onClick={() => setEdit(true)}
+                className="text-[14px] flex items-center px-5 py-1 rounded-full text-white bg-[#4C4C4C]"
+              >
+                <BiEditAlt className="scale-125 mr-2" /> Edit
+              </button>
+            )}
+          </div>
         )}
       </div>
       {show && <div>{children}</div>}

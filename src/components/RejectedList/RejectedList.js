@@ -26,8 +26,8 @@ const RejectedList = () => {
                       {data.name}
                     </h3>
                     <div className="text-[#767676] flex">
-                      <p className="mr-1">{JSON.parse(data.address).state},</p>
-                      {JSON.parse(data.address).city}
+                      {/* <p className="mr-1">{JSON.parse(data.address).state},</p>
+                      {JSON.parse(data.address).city} */}
                     </div>
                   </div>
                   <button className="font-medium text-[#414141] text-[20px] px-4 rounded-md py-1 bg-[#ECECEC]">

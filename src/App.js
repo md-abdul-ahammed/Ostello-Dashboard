@@ -12,7 +12,7 @@ import Careers from "./Pages/Dashboard/Careers/Careers";
 import InstituteRequests from "./components/InstituteRequests/InstituteRequests";
 import ChangesRequest from "./components/ChangesRequest/ChangesRequest";
 import CourseRequests from "./components/CourseRequests/CourseRequests";
-import RejectedList from "./components/RejectedList/RejectedList.js";
+import RejectedList from "./components/RejectedList/RejectedList";
 import ActiveBlogs from "./components/ActiveBlogs/ActiveBlogs";
 import AddBlog from "./components/AddBlog/AddBlog";
 import EditBlog from "./components/EditBlog/EditBlog";
@@ -21,6 +21,13 @@ import AddEvent from "./components/AddEvent/AddEvent";
 import EditEvent from "./components/EditEvent/EditEvent";
 import EditInstitute from "./components/EditInstitute/EditInstitute";
 import EditCourse from "./components/EditCourse/EditCourse";
+import AllStudents from "./components/AllStudents/AllStudents";
+import StudentOverview from "./components/StudentOverview/StudentOverview";
+import StudentDetails from "./components/StudentDetails/StudentDetails";
+import Wishlist from "./components/Wishlist/Wishlist";
+import RecentlyViewed from "./components/RecentlyViewed/RecentlyViewed";
+import Purchased from "./components/Purchased/Purchased";
+import Ongoing from "./components/Ongoing/Ongoing";
 
 function App() {
   return (
@@ -39,6 +46,20 @@ function App() {
           path="/dashboard/events"
           element={<Navigate to="/dashboard/events/activeEvents" />}
         />
+        <Route
+          path="/dashboard/students"
+          element={<Navigate to="/dashboard/students/allStudents" />}
+        />
+
+        <Route path="/studentDetails/:studentId/*" element={<StudentDetails />}>
+          <Route path="" element={<StudentOverview />} />
+          <Route path="overview" element={<StudentOverview />} />
+          <Route path="wishlist" element={<Wishlist />} />
+          <Route path="recentlyViewed" element={<RecentlyViewed />} />
+          <Route path="purchased" element={<Purchased />} />
+          <Route path="ongoing" element={<Ongoing />} />
+        </Route>
+
         <Route path="/editInstitute/:instituteId" element={<EditInstitute />} />
         <Route path="/editCourse" element={<EditCourse />} />
         <Route path="/dashboard/*" element={<Dashboard />}>
@@ -50,7 +71,9 @@ function App() {
             <Route path="rejectedList" element={<RejectedList />} />
           </Route>
           <Route path="institutes" element={<Institutes />} />
-          <Route path="students" element={<Students />} />
+          <Route path="students/*" element={<Students />}>
+            <Route path="allStudents" element={<AllStudents />} />
+          </Route>
           <Route path="coupons" element={<Coupons />} />
           <Route path="blogs/*" element={<Blogs />}>
             <Route path="activeBlogs" element={<ActiveBlogs />} />

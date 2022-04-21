@@ -8,7 +8,7 @@ import {
   instituteDetailsReducer,
   institutesReducer,
 } from "./reducers/InstituteReducer";
-import { blogReducer } from "./reducers/blogReducer";
+import { blogDataReducer, blogReducer } from "./reducers/blogReducer";
 
 const reducer = combineReducers({
   institutes: institutesReducer,
@@ -17,6 +17,7 @@ const reducer = combineReducers({
   location: addNewLocationReducer,
   faculty: addNewFacultyReducer,
   achievement: addNewAchievementReducer,
+  blogData: blogDataReducer,
 });
 
 let initialState = {};

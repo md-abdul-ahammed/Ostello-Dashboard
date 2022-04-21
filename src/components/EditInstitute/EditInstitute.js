@@ -10,7 +10,7 @@ import Achievements from "./Achievements";
 import BankingDetails from "./BankingDetails";
 import Header from "../Header/Header";
 import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getInstituteDetails } from "../../actions/InstituteAction";
 
 const EditInstitute = () => {
@@ -21,6 +21,7 @@ const EditInstitute = () => {
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
+    e.preventDefault();
     const name = e.target.name;
     const value = e.target.value;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -108,7 +109,7 @@ const EditInstitute = () => {
               Accept Changes
             </button>
             <button
-              className="bg-[#E46060] text-white rounded-lg md:py-2 py-3 py-2 px-5"
+              className="bg-[#E46060] text-white mb-3 rounded-lg md:py-2 py-3 px-5"
               onClick={goBack}
             >
               Cancel Changes

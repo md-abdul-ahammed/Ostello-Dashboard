@@ -11,6 +11,8 @@ const InstituteRequests = () => {
     (state) => state.institutes
   );
 
+  console.log(institutes);
+
   const [institute, setInstitute] = useState({});
 
   useEffect(() => {
@@ -31,8 +33,8 @@ const InstituteRequests = () => {
                       {data.name}
                     </h3>
                     <div className="text-[#767676] flex">
-                      <p className="mr-1">{JSON.parse(data.address).state},</p>
-                      {JSON.parse(data.address).city}
+                      {/* <p className="mr-1">{JSON.parse(data.address).state},</p>
+                      {JSON.parse(data.address).city} */}
                     </div>
                   </div>
                   <button

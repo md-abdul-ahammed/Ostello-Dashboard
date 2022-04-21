@@ -2,4 +2,6 @@ export const ALL_BLOG_REQUEST = "ALL_BLOG_REQUEST";
 export const ALL_BLOG_SUCCESS = "ALL_BLOG_SUCCESS";
 export const ALL_BLOG_FAIL = "ALL_BLOG_FAIL";
 
+export const NEW_BLOG_DATA = "NEW_BLOG_DATA";
+
 export const CLEAR_ERRORS = "CLEAR_ERRORS";

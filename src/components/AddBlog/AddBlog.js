@@ -2,13 +2,23 @@ import React, { useState } from "react";
 import AddImageIcon from "../AddImageIcon/AddImageIcon";
 import PageHeader from "../PageHeader/PageHeader";
 import CrossIcon from "../CrossIcon/CrossIcon";
-import { createReactEditorJS } from "react-editor-js";
-import { EDITOR_JS_TOOLS } from "./constants";
-
-const ReactEditorJS = createReactEditorJS();
+import RichTextEditor from "./RichTextEditor";
+import { useDispatch, useSelector } from "react-redux";
+import { getBlogData } from "../../actions/blogAction";
 
 const AddBlog = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [value, setValue] = useState("");
+  const dispatch = useDispatch();
+  const [title, setTitle] = useState("");
+
+  dispatch(
+    getBlogData({
+      title,
+      image: selectedImage,
+      value,
+    })
+  );
 
   const onSelectFile = (e) => {
     const selectedFiles = e.target.files[0];
@@ -21,6 +31,7 @@ const AddBlog = () => {
       <div className="px-[30px] pt-4 pb-16 ">
         <div className="flex flex-col gap-y-3">
           <input
+            onChange={(e) => setTitle(e.target.value)}
             type="text"
             className="w-full px-6 bg-[#FAFAFA] border-2 border-[#A4A4A4] placeholder:text-[#A8A8A8]  text-[#A8A8A8] rounded-lg"
             placeholder="Enter blog title*"
@@ -63,12 +74,8 @@ const AddBlog = () => {
               </button>
             )}
           </div>
-          <ReactEditorJS tools={EDITOR_JS_TOOLS} />
-          <textarea
-            type="text"
-            className="w-full bg-[#FAFAFA] border-2 placeholder:text-[#A8A8A8] text-[#A8A8A8] h-[290px] rounded-lg border-[#A4A4A4]"
-            placeholder="start typing"
-          />
+          <RichTextEditor setValue={setValue} />
+          <div>{value}</div>
           <div className="flex justify-center mt-5 gap-x-5">
             <button className="px-12 font-bold rounded-lg py-2 text-white bg-[#7D23E0]">
               Confirm

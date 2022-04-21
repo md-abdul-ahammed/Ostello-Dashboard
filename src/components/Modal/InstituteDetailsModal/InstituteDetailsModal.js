@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateInstitute } from "../../../actions/InstituteAction";
 import { Link } from "react-router-dom";
 
-const InstituteDetailsModal = ({ institute, setReFetch, setShowModal }) => {
+const InstituteDetailsModal = ({ institute, setShowModal }) => {
   const {
     name,
     description,
@@ -13,11 +13,15 @@ const InstituteDetailsModal = ({ institute, setReFetch, setShowModal }) => {
     owner,
     id,
     services,
+    classmode,
+    achievements,
   } = institute;
-  const { city, line1, line2, area, country, pincode, state } =
-    JSON.parse(address);
+  // const { city, line1, line2, area, country, pincode, state } =
+  //   JSON.parse(address);
   const { skills } = JSON.parse(services);
   const dispatch = useDispatch();
+
+  console.log(achievements);
 
   const handleAccept = (value) => {
     const updatedData = {
@@ -77,18 +81,24 @@ const InstituteDetailsModal = ({ institute, setReFetch, setShowModal }) => {
                 <p className="text-[#767676] text-[14px] font-medium uppercase">
                   Institute type
                 </p>
-                <p className="text-[#414141] text-[18px] font-medium">Online</p>
+                <p className="text-[#414141] text-[18px] font-medium">
+                  {classmode === 1
+                    ? "Hybrid"
+                    : classmode === 2
+                    ? "Online"
+                    : "Offline"}
+                </p>
               </div>
               <div className="mb-4">
                 <p className="text-[#767676] text-[14px] font-medium uppercase">
                   Address
                 </p>
-                <p className="text-[#414141] text-[18px] font-medium">
+                {/* <p className="text-[#414141] text-[18px] font-medium">
                   {line1}, {line2} <br />
                   {area} <br />
                   {state} <span>{pincode}</span> <br />
                   {city} <br /> {country}
-                </p>
+                </p> */}
               </div>
               <div className="mb-4">
                 <p className="text-[#767676] text-[14px] font-medium uppercase">
@@ -103,9 +113,9 @@ const InstituteDetailsModal = ({ institute, setReFetch, setShowModal }) => {
                   Owner details
                 </p>
                 <p className="text-[#414141] text-[18px] font-medium">
-                  {owner.name} <br />
-                  {owner.email} <br />
-                  {owner.phonenumber}
+                  {owner?.name} <br />
+                  {owner?.email} <br />
+                  {owner?.phonenumber}
                 </p>
               </div>
               <div className="mb-4">

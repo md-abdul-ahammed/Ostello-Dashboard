@@ -3,6 +3,7 @@ import {
   ALL_BLOG_REQUEST,
   ALL_BLOG_SUCCESS,
   ALL_BLOG_FAIL,
+  NEW_BLOG_DATA,
   CLEAR_ERRORS,
 } from "../constants/blogConstants";
 
@@ -24,6 +25,10 @@ export const getAllBlogs = () => async (dispatch) => {
       error: error.response.data.message,
     });
   }
+};
+
+export const getBlogData = (data) => async (dispatch) => {
+  dispatch({ type: NEW_BLOG_DATA, payload: data });
 };
 
 export const clearErrors = () => async (dispatch) => {

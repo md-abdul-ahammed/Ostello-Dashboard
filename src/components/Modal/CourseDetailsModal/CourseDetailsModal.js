@@ -5,6 +5,7 @@ import {
   MdOutlineKeyboardArrowDown,
   MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const allData = [
   {
@@ -329,9 +330,12 @@ const CourseDetailsModal = ({ setShowModal }) => {
               <button className="border bg-[#E46060] md:px-8 px-4 py-2 md:py-3 font-bold rounded-lg text-white">
                 Decline
               </button>
-              <button className="border bg-[#F0F0F0] md:px-8 px-4 py-2 md:py-3 font-bold rounded-lg text-[#414141]">
+              <Link
+                to="/editCourse"
+                className="border bg-[#F0F0F0] md:px-8 px-4 py-2 md:py-3 font-bold rounded-lg text-[#414141]"
+              >
                 Edit
-              </button>
+              </Link>
             </div>
           </div>
         </div>
