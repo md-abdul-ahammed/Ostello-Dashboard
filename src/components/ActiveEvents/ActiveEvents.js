@@ -59,7 +59,7 @@ const allData = [
     title:
       "The video title will come here in multiple lines as you can see here ",
     date: "20 Nov 2021",
-    reading_time: 5,
+    reading_time: 6,
     img: eventImage,
   },
   {
